@@ -1,4 +1,8 @@
 class CardActivityController < ApplicationController
+  def index
+    render nothing: true, status: :ok
+  end
+
   def create
     unless request.headers.include?('HTTP_X_TRELLO_WEBHOOK')
       render_unauthorized
