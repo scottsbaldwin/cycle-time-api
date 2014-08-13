@@ -1,0 +1,70 @@
+{
+"action": {
+  "id": "53ea6d06fa43226f74a2c56b",
+  "idMemberCreator": "5148b990bb8ad6045b003b1f",
+  "data":   {
+    "board":     {
+      "shortLink": "qq2Q33aR",
+      "name": "Me",
+      "id": "52ceaa77156434cc72450c71"
+    },
+    "card":     {
+      "shortLink": "L3hQZ6AI",
+      "idShort": 14,
+      "name": "Creating a new card",
+      "id": "53ea45e3d990b61c765dd8f3",
+      "desc": "Updating the card description"
+    },
+    "old":     {
+      "desc": ""
+    }
+  },
+  "type": "updateCard",
+  "date": "2014-08-12T19:37:42.422Z",
+  "memberCreator":   {
+    "id": "5148b990bb8ad6045b003b1f",
+    "avatarHash": "4e71215f2b8bfed0e9812634e35d5648",
+    "fullName": "Scott Baldwin",
+    "initials": "SSB",
+    "username": "scottsbaldwin"
+    }
+  },
+"model": {
+  "id": "52ceaa77156434cc72450c71",
+  "name": "Me",
+  "desc": "",
+  "descData": null,
+  "closed": "false",
+  "idOrganization": null,
+  "pinned": "true",
+  "url": "https://trello.com/b/qq2Q33aR/me",
+  "shortUrl": "https://trello.com/b/qq2Q33aR",
+  "prefs":   {
+    "permissionLevel": "private",
+    "voting": "members",
+    "comments": "members",
+    "invitations": "members",
+    "selfJoin": "false",
+    "cardCovers": "true",
+    "cardAging": "regular",
+    "background": "blue",
+    "backgroundColor": "#23719F",
+    "backgroundImage": null,
+    "backgroundImageScaled": null,
+    "backgroundTile": "false",
+    "backgroundBrightness": "unknown",
+    "canBePublic": "true",
+    "canBeOrg": "true",
+    "canBePrivate": "true",
+    "canInvite": "true"
+  },
+  "labelNames":   {
+    "red": "",
+    "orange": "",
+    "yellow": "",
+    "green": "",
+    "blue": "",
+    "purple": ""
+    }
+  }
+}

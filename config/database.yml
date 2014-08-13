@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  host: localhost
+
+development:
+  <<: *default
+  database: cycle_time_dev
+
+test:
+  <<: *default
+  database: cycle_time_test
+
+production:
+  <<: *default
+  database: cycle_time_prod
