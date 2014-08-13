@@ -23,17 +23,17 @@ class CardActivity < ActiveRecord::Base
       original.exit_date = action_date
       original.time_in_list = (original.exit_date - original.entry_date).to_i
       original.save
-
-      card_in_new_list = CardActivity.create({
-        card_id: action['data']['card']['id'],
-        list_id: action['data']['listAfter']['id'],
-        board_id: action['data']['board']['id'],
-        entry_date: action_date,
-        grouping_year: action_date.year,
-        grouping_month: action_date.mon,
-        grouping_week: action_date.cweek
-      })
     end
+
+    card_in_new_list = CardActivity.create({
+      card_id: action['data']['card']['id'],
+      list_id: action['data']['listAfter']['id'],
+      board_id: action['data']['board']['id'],
+      entry_date: action_date,
+      grouping_year: action_date.year,
+      grouping_month: action_date.mon,
+      grouping_week: action_date.cweek
+    })
     card_in_new_list
   end
 
