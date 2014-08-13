@@ -17,9 +17,10 @@ class CardActivity < ActiveRecord::Base
     list_id = action['data']['listBefore']['id']
     card_id = action['data']['card']['id']
     matches = CardActivity.where(list_id: list_id, card_id: card_id, exit_date: nil).order(entry_date: :desc)
+
+    action_date = Date.parse(action['date'])
     unless matches.empty?
       original = matches.first
-      action_date = Date.parse(action['date'])
       original.exit_date = action_date
       original.time_in_list = (original.exit_date - original.entry_date).to_i
       original.save

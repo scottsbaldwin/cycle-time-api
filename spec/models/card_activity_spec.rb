@@ -27,4 +27,10 @@ describe CardActivity do
 
     expect(card_in_new_list.list_id).to eq(action['data']['listAfter']['id'])
   end
+
+  it "should enter a list on update if existing is not found" do
+    action = JSON.parse(move_list_json)['action']
+    card_in_new_list = subject.move_card_to_new_list(action)
+    expect(card_in_new_list.list_id).to eq(action['data']['listAfter']['id'])
+  end
 end
