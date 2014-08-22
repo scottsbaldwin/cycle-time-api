@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813165204) do
+ActiveRecord::Schema.define(version: 20140814134604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: true do |t|
+    t.string   "trello_board_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "boards", ["trello_board_id"], name: "index_boards_on_trello_board_id", using: :btree
 
   create_table "card_activities", force: true do |t|
     t.string   "card_id"
@@ -34,6 +43,17 @@ ActiveRecord::Schema.define(version: 20140813165204) do
   add_index "card_activities", ["grouping_year", "grouping_month"], name: "index_card_activities_on_grouping_year_and_grouping_month", using: :btree
   add_index "card_activities", ["grouping_year", "grouping_week"], name: "index_card_activities_on_grouping_year_and_grouping_week", using: :btree
   add_index "card_activities", ["list_id"], name: "index_card_activities_on_list_id", using: :btree
+
+  create_table "lists", force: true do |t|
+    t.string   "trello_list_id"
+    t.string   "name"
+    t.string   "trello_board_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lists", ["trello_board_id"], name: "index_lists_on_trello_board_id", using: :btree
+  add_index "lists", ["trello_list_id"], name: "index_lists_on_trello_list_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.string   "model_id"

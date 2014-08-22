@@ -1,6 +1,17 @@
 class CardActivity < ActiveRecord::Base
+  belongs_to :board, primary_key: :trello_board_id, foreign_key: :board_id
+
   def self.create_entry(action)
     entry_date = Date.parse(action['date'])
+    Board.find_or_create_by(
+      trello_board_id: action['data']['board']['id'],
+      name: action['data']['board']['name']
+    )
+    List.find_or_create_by(
+      trello_list_id: action['data']['list']['id'],
+      name: action['data']['list']['name'],
+      trello_board_id: action['data']['board']['id']
+    )
     card_activity = CardActivity.create({
       card_id: action['data']['card']['id'],
       list_id: action['data']['list']['id'],
@@ -14,6 +25,20 @@ class CardActivity < ActiveRecord::Base
   end
 
   def self.move_card_to_new_list(action)
+    Board.find_or_create_by(
+      trello_board_id: action['data']['board']['id'],
+      name: action['data']['board']['name']
+    )
+    List.find_or_create_by(
+      trello_list_id: action['data']['listBefore']['id'],
+      name: action['data']['listBefore']['name'],
+      trello_board_id: action['data']['board']['id']
+    )
+    List.find_or_create_by(
+      trello_list_id: action['data']['listAfter']['id'],
+      name: action['data']['listAfter']['name'],
+      trello_board_id: action['data']['board']['id']
+    )
     list_id = action['data']['listBefore']['id']
     card_id = action['data']['card']['id']
     matches = CardActivity.where(list_id: list_id, card_id: card_id, exit_date: nil).order(entry_date: :desc)

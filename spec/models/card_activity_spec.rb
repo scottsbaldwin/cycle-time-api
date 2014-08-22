@@ -6,7 +6,7 @@ describe CardActivity do
   let(:move_list_json) { File.read(File.expand_path("../../fixtures/card_moves_list.json", __FILE__)) }
   subject { CardActivity }
 
-  it "should enter a list" do
+  it "should enter a list and have a board" do
     action = JSON.parse(creation_json)['action']
     activity = subject.create_entry(action)
     expect(activity.id).to be > 0
@@ -14,6 +14,7 @@ describe CardActivity do
     expect(activity.grouping_year).to eq(2014)
     expect(activity.grouping_month).to eq(8)
     expect(activity.grouping_week).to eq(33)
+    expect(activity.board.trello_board_id).to eq('52ceaa77156434cc72450c71')
   end
 
   it "should exit then enter a new list" do
