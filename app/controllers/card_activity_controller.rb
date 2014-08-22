@@ -35,6 +35,7 @@ class CardActivityController < ApplicationController
     mode = nil
     mode = :create if action['type'] == 'createCard'
     mode = :move   if action['type'] == 'updateCard' &&
+      action['data'].has_key?('listAfter') &&
       action['data']['listAfter']['id'] &&
       action['data']['listBefore']['id']
     mode
