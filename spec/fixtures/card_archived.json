@@ -1,0 +1,70 @@
+{
+    "action": {
+        "data": {
+            "board": {
+                "id": "52ceaa77156434cc72450c71",
+                "name": "Me",
+                "shortLink": "qq2Q33aR"
+            },
+            "card": {
+                "closed": true,
+                "id": "53fb67e7ef72a74ba4ae7123",
+                "idShort": 16,
+                "name": "new card",
+                "shortLink": "r3eM88B0"
+            },
+            "old": {
+                "closed": false
+            }
+        },
+        "date": "2014-08-25T16:44:37.234Z",
+        "id": "53fb67f54ea4caa3e08b0d39",
+        "idMemberCreator": "5148b990bb8ad6045b003b1f",
+        "memberCreator": {
+            "avatarHash": "4e71215f2b8bfed0e9812634e35d5648",
+            "fullName": "Scott Baldwin",
+            "id": "5148b990bb8ad6045b003b1f",
+            "initials": "SSB",
+            "username": "scottsbaldwin"
+        },
+        "type": "updateCard"
+    },
+    "model": {
+        "closed": false,
+        "desc": "",
+        "descData": null,
+        "id": "52ceaa77156434cc72450c71",
+        "idOrganization": null,
+        "labelNames": {
+            "blue": "",
+            "green": "",
+            "orange": "",
+            "purple": "",
+            "red": "",
+            "yellow": ""
+        },
+        "name": "Me",
+        "pinned": true,
+        "prefs": {
+            "background": "blue",
+            "backgroundBrightness": "unknown",
+            "backgroundColor": "#23719F",
+            "backgroundImage": null,
+            "backgroundImageScaled": null,
+            "backgroundTile": false,
+            "canBeOrg": true,
+            "canBePrivate": true,
+            "canBePublic": true,
+            "canInvite": true,
+            "cardAging": "regular",
+            "cardCovers": true,
+            "comments": "members",
+            "invitations": "members",
+            "permissionLevel": "private",
+            "selfJoin": false,
+            "voting": "members"
+        },
+        "shortUrl": "https://trello.com/b/qq2Q33aR",
+        "url": "https://trello.com/b/qq2Q33aR/me"
+    }
+}

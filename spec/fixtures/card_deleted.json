@@ -1,0 +1,68 @@
+{
+    "action": {
+        "data": {
+            "board": {
+                "id": "52ceaa77156434cc72450c71",
+                "name": "Me",
+                "shortLink": "qq2Q33aR"
+            },
+            "card": {
+                "id": "53fb67e7ef72a74ba4ae7123",
+                "idShort": 16
+            },
+            "list": {
+                "id": "52ceaa77156434cc72450c72",
+                "name": "To Do"
+            }
+        },
+        "date": "2014-08-25T16:47:44.415Z",
+        "id": "53fb68b07dc896ce93defd39",
+        "idMemberCreator": "5148b990bb8ad6045b003b1f",
+        "memberCreator": {
+            "avatarHash": "4e71215f2b8bfed0e9812634e35d5648",
+            "fullName": "Scott Baldwin",
+            "id": "5148b990bb8ad6045b003b1f",
+            "initials": "SSB",
+            "username": "scottsbaldwin"
+        },
+        "type": "deleteCard"
+    },
+    "model": {
+        "closed": false,
+        "desc": "",
+        "descData": null,
+        "id": "52ceaa77156434cc72450c71",
+        "idOrganization": null,
+        "labelNames": {
+            "blue": "",
+            "green": "",
+            "orange": "",
+            "purple": "",
+            "red": "",
+            "yellow": ""
+        },
+        "name": "Me",
+        "pinned": true,
+        "prefs": {
+            "background": "blue",
+            "backgroundBrightness": "unknown",
+            "backgroundColor": "#23719F",
+            "backgroundImage": null,
+            "backgroundImageScaled": null,
+            "backgroundTile": false,
+            "canBeOrg": true,
+            "canBePrivate": true,
+            "canBePublic": true,
+            "canInvite": true,
+            "cardAging": "regular",
+            "cardCovers": true,
+            "comments": "members",
+            "invitations": "members",
+            "permissionLevel": "private",
+            "selfJoin": false,
+            "voting": "members"
+        },
+        "shortUrl": "https://trello.com/b/qq2Q33aR",
+        "url": "https://trello.com/b/qq2Q33aR/me"
+    }
+}

@@ -17,7 +17,8 @@ class CardActivityController < ApplicationController
       mode = determine_mode(action)
       create_entry(action) if mode == :create
       update_entry(action) if mode == :move
-      puts request.raw_post unless (mode == :create || mode == :move)
+      archive_entry(action) if mode == :archive
+      delete_entry(action) if mode == :delete
     end
 
   end
@@ -39,6 +40,13 @@ class CardActivityController < ApplicationController
       action['data'].has_key?('listAfter') &&
       action['data']['listAfter']['id'] &&
       action['data']['listBefore']['id']
+    mode = :archive if action['type'] == 'updateCard' &&
+      action['data']['old']['closed'] == false &&
+      action['data']['card']['closed'] == true
+    mode = :restore if action['type'] == 'updateCard' &&
+      action['data']['old']['closed'] == true &&
+      action['data']['card']['closed'] == false
+    mode = :delete if action['type'] == 'deleteCard'
     mode
   end
 
@@ -48,5 +56,13 @@ class CardActivityController < ApplicationController
 
   def update_entry(action)
     CardActivity.move_card_to_new_list(action)
+  end
+
+  def archive_entry(action)
+    CardActivity.archive_card(action)
+  end
+
+  def delete_entry(action)
+    CardActivity.delete_card(action)
   end
 end

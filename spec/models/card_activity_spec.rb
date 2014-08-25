@@ -4,6 +4,9 @@ describe CardActivity do
   let(:creation_json) { File.read(File.expand_path("../../fixtures/card_creation.json", __FILE__)) }
   let(:update_json) { File.read(File.expand_path("../../fixtures/card_update.json", __FILE__)) }
   let(:move_list_json) { File.read(File.expand_path("../../fixtures/card_moves_list.json", __FILE__)) }
+  let(:archived_json) { File.read(File.expand_path("../../fixtures/card_archived.json", __FILE__)) }
+  let(:deleted_json) { File.read(File.expand_path("../../fixtures/card_deleted.json", __FILE__)) }
+  let(:restored_json) { File.read(File.expand_path("../../fixtures/card_restored.json", __FILE__)) }
   subject { CardActivity }
 
   it "should enter a list and have a board" do
@@ -35,13 +38,24 @@ describe CardActivity do
     expect(card_in_new_list.list_id).to eq(action['data']['listAfter']['id'])
   end
 
-  # it "should exit a list when card is archived" do
+  it "should exit a list when card is archived" do
+    action = JSON.parse(archived_json)['action']
+    existing_card         = FactoryGirl.create(:entry_only_card, card_id: action['data']['card']['id'])
+    subject.archive_card(action)
+    card_in_original_list = CardActivity.find(existing_card.id)
+    expect(card_in_original_list.exit_date).to eq (Date.parse(action['date']))
+  end
 
-  # end
-
-  # it "should exit a list when card is deleted" do
-
-  # end
+  it "should exit a list when card is deleted" do
+    action = JSON.parse(deleted_json)['action']
+    existing_card         = FactoryGirl.create(:entry_only_card,
+                                                card_id: action['data']['card']['id'],
+                                                list_id: action['data']['list']['id']
+                                              )
+    subject.delete_card(action)
+    card_in_original_list = CardActivity.find(existing_card.id)
+    expect(card_in_original_list.exit_date).to eq (Date.parse(action['date']))
+  end
 
   it "should belong to a list" do
     list = FactoryGirl.create(:todo_list)
