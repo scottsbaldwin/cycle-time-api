@@ -17,6 +17,7 @@ class CardActivityController < ApplicationController
       mode = determine_mode(action)
       create_entry(action) if mode == :create
       update_entry(action) if mode == :move
+      puts request.raw_post unless (mode == :create || mode == :move)
     end
 
   end
