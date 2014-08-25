@@ -19,7 +19,7 @@ describe CardActivity do
 
   it "should exit then enter a new list" do
     action = JSON.parse(move_list_json)['action']
-    existing_card         = FactoryGirl.create(:entry_only_card)
+    existing_card         = FactoryGirl.create(:entry_only_card, list_id: action['data']['listBefore']['id'])
     card_in_new_list      = subject.move_card_to_new_list(action)
     card_in_original_list = CardActivity.find(existing_card.id)
 
@@ -33,5 +33,19 @@ describe CardActivity do
     action = JSON.parse(move_list_json)['action']
     card_in_new_list = subject.move_card_to_new_list(action)
     expect(card_in_new_list.list_id).to eq(action['data']['listAfter']['id'])
+  end
+
+  # it "should exit a list when card is archived" do
+
+  # end
+
+  # it "should exit a list when card is deleted" do
+
+  # end
+
+  it "should belong to a list" do
+    list = FactoryGirl.create(:todo_list)
+    card_activity = FactoryGirl.create(:entry_only_card)
+    expect(card_activity.list.trello_list_id).to eq(list.trello_list_id)
   end
 end

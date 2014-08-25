@@ -1,5 +1,6 @@
 class CardActivity < ActiveRecord::Base
   belongs_to :board, primary_key: :trello_board_id, foreign_key: :board_id
+  belongs_to :list, primary_key: :trello_list_id, foreign_key: :list_id
 
   def self.create_entry(action)
     entry_date = Date.parse(action['date'])

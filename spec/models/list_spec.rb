@@ -12,4 +12,10 @@ describe List do
     duplicate = FactoryGirl.build(:todo_list)
     expect(duplicate.valid?).to be_false
   end
+
+  it "should have cards" do
+    FactoryGirl.create(:entry_only_card)
+    list = FactoryGirl.create(:todo_list)
+    expect(list.card_activity.count).to be > 0
+  end
 end
