@@ -23,6 +23,15 @@ class CardActivityController < ApplicationController
 
   end
 
+  def show
+    list_id = params[:id]
+    json = {
+      average_arrival_rate: MetricCalculator.average_arrival_rate_for_list(list_id),
+      average_days_in_list: MetricCalculator.average_days_in_list(list_id)
+    }
+    render json: json
+  end
+
   private
 
   def render_unauthorized
