@@ -13,7 +13,7 @@ class MetricCalculator
   end
 
   def self.average_days_in_list(list_id = 'list_not_set')
-    values = CardActivity.select("sum(time_in_list) as time_in_list").group("grouping_year, grouping_week").where(list_id: list_id).map(&:time_in_list)
+    values = CardActivity.select("avg(time_in_list) as time_in_list").group("grouping_year, grouping_week").where(list_id: list_id).map(&:time_in_list)
     average = average_of_values values
     average
   end
