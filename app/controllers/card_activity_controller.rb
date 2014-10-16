@@ -30,10 +30,8 @@ class CardActivityController < ApplicationController
       average_days_in_list: MetricCalculator.average_days_in_list(list_id)
     }
 
-    jsonp = params[:jsonp]
-    if jsonp
-      executable = "#{jsonp}(#{json.to_json})"
-      render json: executable
+    if params[:jsonp]
+      render json: json, callback: params[:jsonp]
     else
       render json: json
     end
