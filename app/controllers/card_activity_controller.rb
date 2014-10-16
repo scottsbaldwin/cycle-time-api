@@ -29,7 +29,14 @@ class CardActivityController < ApplicationController
       average_arrival_rate_per_week: MetricCalculator.average_arrival_rate_for_list(list_id),
       average_days_in_list: MetricCalculator.average_days_in_list(list_id)
     }
-    render json: json
+
+    jsonp = params[:jsonp]
+    if jsonp
+      executable = "#{jsonp}(#{json.to_json})"
+      render json: executable
+    else
+      render json: json
+    end
   end
 
   private
